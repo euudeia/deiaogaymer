@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quer jogar Roblox cmg?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" id="mainContainer">
+        <h1>Quer jogar Roblox cmg?</h1>
+        <div class="buttons">
+            <button class="sim" id="simButton">Sim</button>
+            <button class="nao" id="naoButton">Não</button>
+        </div>
+    </div>
+
+    <div class="container hidden" id="confirmationContainer">
+        <h1>Sua presença foi confirmada, entre às 21h</h1>
+    </div>
+
+    <script>
+        const naoButton = document.getElementById('naoButton');
+        const simButton = document.getElementById('simButton');
+        const mainContainer = document.getElementById('mainContainer');
+        const confirmationContainer = document.getElementById('confirmationContainer');
+
+        naoButton.addEventListener('mouseover', function() {
+            const containerWidth = naoButton.parentElement.offsetWidth;
+            const containerHeight = naoButton.parentElement.offsetHeight;
+
+            let randomX = Math.random() * (containerWidth - naoButton.offsetWidth);
+            let randomY = Math.random() * (containerHeight - naoButton.offsetHeight);
+
+            if (randomX + naoButton.offsetWidth > containerWidth - 50) {
+                randomX -= 50;
+            }
+            if (randomY + naoButton.offsetHeight > containerHeight - 50) {
+                randomY -= 50;
+            }
+
+            naoButton.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        });
+
+        simButton.addEventListener('click', function() {
+            mainContainer.classList.add('hidden');
+            confirmationContainer.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
